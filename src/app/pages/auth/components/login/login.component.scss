@@ -1,0 +1,79 @@
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    max-width: 450px;
+    margin: 0 auto;
+
+    .login-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding: 60px;
+        width: 100%;
+        background-color: rgba(0, 0, 0, .75);
+        margin: 90px 0;
+        border-radius: 4px;
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+
+            .input-wrapper {
+                .login-input {
+                    background: #333;
+                    border: 0;
+                    border-radius: 4px;
+                    color: #ffffff;
+                    height: 50px;
+                    line-height: 50px;
+                    padding: 16px 20px;
+                    margin-bottom: 16px;
+                    outline: none;
+                    width: 100%;
+                }
+            }
+
+            .login-btn {
+                border-radius: 4px;
+                padding: 16px;
+                font-weight: 500;
+                margin: 24px 0 12px;
+                background: #e50914;
+                color: #ffffff;
+                border: none;
+            }
+
+            .remember-wrapper {
+                .remember-checkbox {
+                    width: 16px;
+                    background: #737373;
+                    border: 0;
+                    border-radius: 2px;
+                    margin-right: 2px;
+                }
+
+                .remember-label {
+                    color: #b3b3b3;
+                }
+            }
+
+            .help-link {
+                text-decoration: none;
+                color: #b3b3b3;
+            }
+        }
+
+        .card-footer {
+            .footer-text {
+                color: #737373;
+                margin-right: 3px;
+            }
+
+            .signup-link {
+                text-decoration: none;
+                color: #ffff
+            }
+        }
+    }
+}
