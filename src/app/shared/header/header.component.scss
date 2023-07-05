@@ -1,0 +1,56 @@
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: auto;
+    min-height: 70px;
+    z-index: 1;
+    background-image: linear-gradient(180deg, rgba(0, 0, 0, .7) 10%, transparent);
+    width: 100%;
+    .header-wrapper {
+        padding: 0 50px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 68px;
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            .home-link {
+                margin-right: 25px;
+
+                svg {
+                    width: 90px;
+                    height: 30px;
+                }
+            }
+
+            .nav-list {
+                display: flex;
+                list-style: none;
+                margin-bottom: 0;
+                padding: 0;
+
+                li {
+                    margin-left: 18px;
+
+                    a {
+                        color: #e5e5e5;
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        .search-wrapper {
+            display: flex;
+            justify-content: end;
+            .search-button{
+                background: transparent;
+                border: none;
+                cursor: pointer;
+            }
+        }
+    }
+}
