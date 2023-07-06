@@ -1,5 +1,5 @@
 .hero-section {
-    height: calc(100vh - 200px);
+    height: 56.25vw;
 
     .hero-wrapper {
         position: relative;
@@ -10,7 +10,6 @@
             object-fit: cover;
             object-position: top;
             width: 100%;
-            height: 100%;
             z-index: -1;
         }
 
@@ -22,11 +21,11 @@
             bottom: 0;
             height: 40%;
             width: 100%;
-            z-index: 0;
+            z-index: -1;
         }
 
         .content-wrapper {
-            bottom: 30%;
+            bottom: 40%;
             display: flex;
             flex-direction: column;
             justify-content: flex-end;

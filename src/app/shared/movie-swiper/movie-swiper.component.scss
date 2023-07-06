@@ -1,0 +1,41 @@
+.netflix-slider {
+    margin: 3vw 0;
+
+    .category-title {
+        color: #e5e5e5;
+        font-weight: 500;
+        padding: 0 4%
+    }
+
+    .swiper-container {
+        width: 100%;
+        height: 100%;
+        padding: 0 4%;
+
+        .swiper-wrapper {
+            .swiper-slide {
+                img {
+                    max-width: 100%;
+                    height: auto;
+                    border-radius: 3px;
+                }
+            }
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            display: none !important;
+            color: #ffff;
+        }
+
+        &:hover {
+
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: block !important;
+
+            }
+        }
+    }
+
+}
