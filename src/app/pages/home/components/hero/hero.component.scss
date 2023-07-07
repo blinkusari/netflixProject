@@ -32,7 +32,7 @@
             left: 4%;
             position: absolute;
             top: 0;
-            width: 36%;
+            width: 40%;
             z-index: 1;
 
             .img-wrapper {
@@ -66,6 +66,29 @@
                     }
                 }
 
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .hero-section{
+        .hero-wrapper{
+            .content-wrapper{
+                width: 70%;
+                bottom: 0;
+                .img-wrapper{
+                    width: 80%;
+
+                }
+                .button-wrapper{
+                    button{
+                        padding: 4px 10px;
+                    }
+                }
+            }
+            &::after{
+                height: 80%;
             }
         }
     }
