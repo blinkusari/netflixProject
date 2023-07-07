@@ -10,13 +10,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HomeModule } from './pages/home/home.module';
 import { SharedModule } from './shared/shared.module';
+import {HttpClientModule} from "@angular/common/http";
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    SearchComponent
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +27,9 @@ import { SharedModule } from './shared/shared.module';
     BrowserAnimationsModule,
     RouterModule,
     HomeModule,
-    SharedModule
+    SharedModule,
+    HttpClientModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
