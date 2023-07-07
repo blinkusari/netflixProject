@@ -1,4 +1,4 @@
-.login {
+.register {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,7 +6,7 @@
     max-width: 450px;
     margin: 0 auto;
 
-    .login-wrapper {
+    .register-wrapper {
         display: flex;
         flex-direction: column;
         padding: 60px;
@@ -15,12 +15,12 @@
         margin: 90px 0;
         border-radius: 4px;
 
-        .login-form {
+        .register-form {
             display: flex;
             flex-direction: column;
 
             .input-wrapper {
-                .login-input {
+                .register-input {
                     background: #333;
                     border: 0;
                     border-radius: 4px;
@@ -34,7 +34,7 @@
                 }
             }
 
-            .login-btn {
+            .register-btn {
                 border-radius: 4px;
                 padding: 16px;
                 font-weight: 500;
@@ -74,6 +74,14 @@
                 text-decoration: none;
                 color: #ffff
             }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .register{
+        .register-wrapper{
+            padding: 20px;
         }
     }
 }

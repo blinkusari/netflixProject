@@ -65,3 +65,14 @@
         }
     }
 }
+
+@media screen and (max-width: 767px) {
+    .auth{
+        background-color: #000000;
+        .img-wrapper{
+            img{
+                display: none;
+            }
+        }
+    }
+}
