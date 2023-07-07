@@ -1,0 +1,42 @@
+.search-section {
+    padding-top: 70px;
+
+    .search-wrapper {
+        padding: 40px 4% 0;
+
+        .suggested-wrapper {
+            display: flex;
+            align-items: start;
+
+            .explore {
+                color: grey;
+                margin-right: 5px;
+                white-space: nowrap;
+            }
+
+            .search-list {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-wrap: wrap;
+
+                li {
+                    border-right: 1px solid grey;
+                    list-style: none;
+                    padding: 0 0.5em;
+
+                    a {
+                        cursor: pointer;
+                        text-decoration: none;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .item-wrapper {
+            margin-bottom: 4vw;
+            padding: 0 0.2vw;
+        }
+    }
+}
