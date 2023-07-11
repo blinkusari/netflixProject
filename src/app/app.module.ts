@@ -10,10 +10,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HomeModule } from './pages/home/home.module';
 import { SharedModule } from './shared/shared.module';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
-
+import {BaseInterceptor} from "./base.interceptor";
 
 @NgModule({
   declarations: [
@@ -33,10 +33,14 @@ import { FormsModule } from '@angular/forms';
     SharedModule,
     HttpClientModule,
     MatDialogModule,
-    
-
   ],
-  providers: [],
+  providers: [
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass: BaseInterceptor,
+      multi   : true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,8 @@ import { AuthComponent } from './auth.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatInputModule} from "@angular/material/input";
 
 @NgModule({
     declarations: [
@@ -18,7 +20,9 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
         RouterModule,
         BrowserModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
     exports: [
         AuthComponent,

@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   authUrl:'https://apingweb.com/api',
-  baseUrl: 'https://api.themoviedb.org/3'
+  baseUrl: 'https://api.themoviedb.org/3',
+  bearerToken: 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI2NmMwNWE2Zjc2ZDRhOTQ0ODE5ZDliMTkyOTIxNmY4YSIsInN1YiI6IjY0YTgxZWFkYWYyZGE4MDBhZTY0YmFhNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.qmaAhwwfwc1zvDVgoVNZtG3vviPz3pN8Fm_WomZSRjo',
 };
 
 /*

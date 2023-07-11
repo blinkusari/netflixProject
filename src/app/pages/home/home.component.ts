@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from 'src/app/services/auth.service';
+import {MoviesService} from "../../services/movies.service";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +7,10 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  constructor(private authService: AuthService) {
+  constructor(private moviesService: MoviesService) {
 
   }
   ngOnInit() {
+    this.moviesService.getMovies();
   }
 }
