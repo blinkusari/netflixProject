@@ -24,15 +24,21 @@ export class AuthService {
   }
 
   register(user: any): Observable<any> {
-    return this.httpClient.post(`${environment.authUrl}/register`, user).pipe(
-      catchError(this.handleError)
-    )
+    return this.httpClient.post(`${environment.authUrl}/register`, user)
+      .pipe(
+        catchError(this.handleError),
+        map((response: any) => {
+          this.router.navigate(['/login']);
+          return response;
+        })
+      );
   }
 
+  
   login(user: any) {
     return this.httpClient.post<any>(`${environment.authUrl}/login`, user)
       .subscribe((res: any) => {
-        console.log('LOGIn', res)
+        console.log('login', res)
         localStorage.setItem('access_token', res.token)
         this.router.navigate(['/home']);
       })

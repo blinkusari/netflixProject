@@ -11,7 +11,5 @@ export class HomeComponent {
 
   }
   ngOnInit() {
-    console.log("log", this.authService.isLoggedIn())
-
   }
 }

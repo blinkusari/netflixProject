@@ -1,17 +1,16 @@
 <section class="register">
     <div class="register-wrapper">
         <h1 class="text-white mb-4">Register</h1>
-        <form class="register-form mb-5">
+        <form [formGroup]="registerForm" class="register-form mb-5" (ngSubmit)="signUp()">
             <div class="input-wrapper">
-                <input class="register-input" placeholder="Name" type="text">
-                <input class="register-input" placeholder="Surname" type="text">
-                <input class="register-input" placeholder="Email" type="text">
-                <input class="register-input" placeholder="Phone number" type="text">
-                <input class="register-input" placeholder="Password" type="password">
-                <input class="register-input" placeholder="Confirm Password" type="password">
+                <input class="register-input" formControlName="name" placeholder="Full name" type="text">
+                <input class="register-input" formControlName="email" placeholder="Email" type="email">
+                <input class="register-input" formControlName="phone" placeholder="Phone number" type="text">
+                <input class="register-input" formControlName="password" placeholder="Password" type="password">
+                <input class="register-input" formControlName="password_confirmation" placeholder="Confirm Password" type="password">
 
             </div>
-            <button class="register-btn">Register</button>
+            <button type="submit" class="register-btn">Register</button>
             <div class="d-flex justify-content-between">
                 <div class="remember-wrapper">
                     <input class="remember-checkbox" type="checkbox" id="" name="">

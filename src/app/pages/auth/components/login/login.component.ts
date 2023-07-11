@@ -9,36 +9,26 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  email: string = '';
-  password: string = '';
-  authForm: FormGroup;
+  loginForm: FormGroup;
   isSubmitted = false;
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
-    this.authForm = this.formBuilder.group({
+    this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
   ngOnInit() {
-    console.log("log", this.authService.isLoggedIn())
-   
     //     "email":"superman@gmail.com",
     //     "password":"123456"
   }
 
   signIn() {
     this.isSubmitted = true;
-    if (this.authForm.invalid) {
+    if (this.loginForm.invalid) {
       return;
     }
-    this.authService.login(this.authForm.value);
+    this.authService.login(this.loginForm.value);
   }
 
-  login() {
-    const userData = {
-      email: this.email,
-      password: this.password
-    }
-    this.authService.login(userData)
-  }
+
 }
