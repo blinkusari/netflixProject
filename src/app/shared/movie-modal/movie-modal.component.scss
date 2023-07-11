@@ -4,7 +4,22 @@
 
     .modal-hero {
         position: relative;
-        height: 39vw;
+        height: 30vw;
+
+        .close-btn {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            background-color: #181818;
+            border-radius: 50%;
+            padding: 8px;
+            z-index: 4;
+            color: #fff;
+            border: none;
+            svg{
+                outline: none;
+            }
+        }
 
         .bg-img {
             position: absolute;
@@ -12,6 +27,7 @@
             object-position: top;
             width: 100%;
             z-index: 1;
+            height: 100%;
         }
 
         .content-wrapper {

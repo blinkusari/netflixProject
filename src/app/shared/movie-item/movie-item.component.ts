@@ -12,7 +12,7 @@ export class MovieItemComponent {
 
   openModal(): void {
     const dialogRef = this.dialog.open(MovieModalComponent, {
-      width: '70vw',
+      width: '1000px',
       minWidth: '0px',
       height: '90vh',
       data: { /* Optionally pass data to the modal component */ }
