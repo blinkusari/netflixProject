@@ -6,9 +6,10 @@ import { RegisterComponent } from './pages/auth/components/register/register.com
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { AuthComponent } from './pages/auth/auth.component';
+import { AuthGuard } from './auth.guards';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '',
     component: AuthComponent,
@@ -21,8 +22,8 @@ const routes: Routes = [
       }
     ]
   },
-  { path: 'home', component: HomeComponent },
-  { path: 'search', component: SearchComponent },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'search', component: SearchComponent, canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'home', pathMatch: 'full' },
 
 ];
@@ -33,6 +34,7 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forRoot(routes)
-  ]
+  ],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

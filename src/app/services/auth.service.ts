@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {environment} from "../../environments/environment";
+import { environment } from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
@@ -26,18 +26,22 @@ export class AuthService {
   constructor(private httpClient: HttpClient, public router: Router) {
   }
 
-  register(user:any): Observable<any> {
+  register(user: any): Observable<any> {
     return this.httpClient.post(`${environment.authUrl}/register`, user).pipe(
       catchError(this.handleError)
     )
   }
 
-  login(user:any) {
+  login(user: any) {
     return this.httpClient.post<any>(`${environment.authUrl}/login`, user)
       .subscribe((res: any) => {
         console.log('LOGIn', res)
         localStorage.setItem('access_token', res.token)
       })
+  }
+
+  public isLoggedIn(){
+    return localStorage.getItem('access_token') !== null;
   }
 
   handleError(error: HttpErrorResponse) {
