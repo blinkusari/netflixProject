@@ -1,0 +1,197 @@
+.movie-modal {
+    min-height: 100vh;
+    background: #141414;
+
+    .modal-hero {
+        position: relative;
+        height: 39vw;
+
+        .bg-img {
+            position: absolute;
+            object-fit: cover;
+            object-position: top;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            z-index: 3;
+            position: absolute;
+            bottom: 10%;
+            flex-direction: column;
+            justify-content: flex-end;
+            left: 4%;
+            top: 0;
+            width: 40%;
+            display: flex;
+
+            .img-wrapper {
+                margin-bottom: 1.5rem;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        .button-wrapper {
+            display: flex;
+            align-items: center;
+
+            .play-btn {
+                border: none;
+                padding: 10px 30px;
+                margin-right: 15px;
+                border-radius: 4px;
+                font-weight: 500;
+
+                svg {
+                    margin-right: 5px;
+                }
+            }
+
+            .add-btn,
+            .like-btn {}
+        }
+
+        &:after {
+            content: "";
+            background-color: transparent;
+            background: linear-gradient(180deg, hsla(0, 0%, 8%, 0) 0, hsla(0, 0%, 8%, 0.15) 15%, hsla(0, 0%, 8%, 0.35) 29%, hsla(0, 0%, 8%, 0.58) 44%, #141414cf 68%, #141414);
+            position: absolute;
+            bottom: 0;
+            height: 40%;
+            width: 100%;
+            z-index: 2;
+        }
+    }
+
+    .modal-body {
+        .movie-details {
+            padding: 0.8em 3em;
+
+            .movie-detail {
+                display: flex;
+                flex-direction: column;
+                align-items: start;
+
+                .data-wrapper {
+                    margin-bottom: 0.25em;
+
+                    span {
+                        margin-right: 0.5em;
+                        color: #bcbcbc;
+
+                        &.green {
+                            color: #46d369;
+                        }
+
+                        &.hd {
+                            border: 1px solid hsla(0, 0%, 100%, .4);
+                            border-radius: 3px;
+                            color: hsla(0, 0%, 100%, .9);
+                            font-size: .7em;
+                            padding: 0 0.5em;
+                        }
+
+                        &.age {
+                            border: 1px solid hsla(0, 0%, 100%, .4);
+                            padding: 0 0.4em;
+                            color: #fff;
+                        }
+
+                        &.category {
+                            color: #fff;
+
+                        }
+                    }
+                }
+
+                .description-wrapper {
+                    margin: 15px 0;
+
+                    .dsp {
+                        color: #fff;
+                    }
+                }
+
+            }
+
+            .movie-makers {
+                .makers-data {
+                    color: #fff;
+
+                    .gray {
+                        color: #777;
+                    }
+                }
+            }
+        }
+
+        .more-title {
+            color: #fff;
+        }
+
+        .more-movie-wrapper {
+            display: flex;
+            flex-direction: column;
+            border-radius: 0.25em;
+
+            img {
+                width: 100%;
+            }
+
+            .dsp-content {
+                padding: 1em;
+                background-color: #2f2f2f;
+                display: flex;
+                flex-direction: column;
+
+                .head {
+                    display: flex;
+                    justify-content: space-between;
+
+                    .left-part {
+                        display: flex;
+                        flex-direction: column;
+
+                        span {
+                            margin-right: 0.5em;
+                            color: #bcbcbc;
+
+                            &.new {
+                                color: #46d369;
+                            }
+
+                            &.age {
+                                border: 1px solid hsla(0, 0%, 100%, .4);
+                                padding: 0 0.4em;
+                                color: #fff;
+                            }
+                        }
+
+                    }
+
+                    .right-part {
+                        .add-btn {
+                            background: transparent;
+                            border: 1px solid rgba(255, 255, 255, 0.7);
+                            border-radius: 50%;
+                            height: 40px;
+                            width: 40px;
+                            color: #fff;
+                        }
+                    }
+                }
+            }
+
+            .dsp-body {
+                margin-top: 20px;
+
+                .dsp {
+                    color: #fff;
+                }
+            }
+        }
+    }
+}

@@ -3,10 +3,10 @@
         <h1 class="text-white mb-4">Sign in</h1>
         <form class="login-form mb-5">
             <div class="input-wrapper">
-                <input class="login-input" placeholder="Email or phone number" type="text">
-                <input class="login-input" placeholder="Password" type="password">
+                <input class="login-input" placeholder="Email or phone number" name="email" type="email" [(ngModel)] ="email">
+                <input class="login-input" placeholder="Password" type="password" name="password" [(ngModel)] ="password">
             </div>
-            <button routerLink="/register" class="login-btn">Sign In</button>
+            <button (click)="login()" class="login-btn">Sign In</button>
             <div class="d-flex justify-content-between">
                 <div class="remember-wrapper">
                     <input class="remember-checkbox" type="checkbox" id="" name="">

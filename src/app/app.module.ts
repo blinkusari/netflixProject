@@ -10,7 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { HomeModule } from './pages/home/home.module';
 import { SharedModule } from './shared/shared.module';
-import {HttpClientModule} from "@angular/common/http";
+import { HttpClientModule } from "@angular/common/http";
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,13 +24,15 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AuthModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     RouterModule,
     HomeModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    MatDialogModule
 
   ],
   providers: [],
