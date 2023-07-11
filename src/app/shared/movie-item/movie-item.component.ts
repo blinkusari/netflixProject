@@ -15,6 +15,7 @@ export class MovieItemComponent {
       width: '1000px',
       minWidth: '0px',
       height: '90vh',
+      maxWidth:'90vw',
       data: { /* Optionally pass data to the modal component */ }
     });
 

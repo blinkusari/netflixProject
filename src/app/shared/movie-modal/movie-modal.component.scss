@@ -16,7 +16,8 @@
             z-index: 4;
             color: #fff;
             border: none;
-            svg{
+
+            svg {
                 outline: none;
             }
         }
@@ -67,7 +68,15 @@
             }
 
             .add-btn,
-            .like-btn {}
+            .like-btn {
+                background: transparent;
+                border: 1px solid rgba(255, 255, 255, 0.7);
+                border-radius: 50%;
+                height: 40px;
+                width: 40px;
+                color: #fff;
+                margin-right: 10px;
+            }
         }
 
         &:after {
@@ -146,6 +155,7 @@
 
         .more-title {
             color: #fff;
+            margin: 20px 0;
         }
 
         .more-movie-wrapper {
@@ -207,6 +217,24 @@
                 .dsp {
                     color: #fff;
                 }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .movie-modal {
+        .modal-hero{
+            height: 50vw;
+            .button-wrapper{
+                .play-btn{
+                    padding: 10px;  
+                }
+            }
+        }
+        .modal-body {
+            .movie-details {
+                padding: 0.2em 1em;
             }
         }
     }
