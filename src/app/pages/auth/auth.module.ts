@@ -5,7 +5,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { AuthComponent } from './auth.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -17,7 +17,8 @@ import { FormsModule } from '@angular/forms';
         CommonModule,
         RouterModule,
         BrowserModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
     exports: [
         AuthComponent,

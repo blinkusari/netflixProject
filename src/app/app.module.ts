@@ -32,7 +32,8 @@ import { FormsModule } from '@angular/forms';
     HomeModule,
     SharedModule,
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    
 
   ],
   providers: [],

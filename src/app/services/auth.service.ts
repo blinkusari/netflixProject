@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
-
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from "../../environments/environment";
@@ -21,7 +19,6 @@ import { environment } from "../../environments/environment";
 
 export class AuthService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-  currentUser = {};
 
   constructor(private httpClient: HttpClient, public router: Router) {
   }
@@ -37,10 +34,11 @@ export class AuthService {
       .subscribe((res: any) => {
         console.log('LOGIn', res)
         localStorage.setItem('access_token', res.token)
+        this.router.navigate(['/home']);
       })
   }
 
-  public isLoggedIn(){
+  public isLoggedIn() {
     return localStorage.getItem('access_token') !== null;
   }
 
