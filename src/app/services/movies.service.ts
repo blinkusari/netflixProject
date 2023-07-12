@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from "../../environments/environment";
-import { map } from 'rxjs';
+import { map, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,12 @@ import { map } from 'rxjs';
 export class MoviesService {
   constructor(private httpClient: HttpClient, public router: Router) {
   }
+  private searchTermSubject = new Subject<string>();
+  public searchTerm$ = this.searchTermSubject.asObservable();
 
+  setSearchTerm(searchTerm: string) {
+    this.searchTermSubject.next(searchTerm);
+  }
   // getMovies(){
   //   let parameters = {
   //     page: 1,
@@ -53,12 +58,23 @@ export class MoviesService {
     let parameters = {
       page: 1,
       with_genres: id,
-      results: 10,
-
     };
+
     let queryParams = new HttpParams({ fromObject: parameters });
 
     return this.httpClient.get(`${environment.baseUrl}/discover/movie`, { params: queryParams });
+  }
+
+
+  getSearchMovies(keyword: string) {
+    let parameters = {
+      page: 1,
+      query: keyword,
+    };
+
+    let queryParams = new HttpParams({ fromObject: parameters });
+
+    return this.httpClient.get(`${environment.baseUrl}/search/movie`, { params: queryParams });
   }
 
 }

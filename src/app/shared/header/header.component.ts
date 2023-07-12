@@ -1,6 +1,7 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +11,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class HeaderComponent {
   showSearchInput: boolean = false;
   searchTerm: string = '';
-
-  constructor(private route: Router, private authService: AuthService) { }
+  getAllSearchedMovies: any = []
+  constructor(private route: Router, private authService: AuthService, private movieService: MoviesService) { }
 
   logout() {
     localStorage.removeItem('access_token');
@@ -25,15 +26,19 @@ export class HeaderComponent {
   closeSearchInput() {
     this.showSearchInput = false;
     this.route.navigateByUrl('/home');
+    this.searchTerm = '';
 
   }
 
   performSearch() {
     if (this.searchTerm.trim() !== '') {
       this.route.navigate(['/search'], { queryParams: { term: this.searchTerm } });
+      this.movieService.setSearchTerm(this.searchTerm);
     } else {
       this.route.navigateByUrl('/home');
     }
   }
+
+
 
 }
