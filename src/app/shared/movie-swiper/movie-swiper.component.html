@@ -1,9 +1,10 @@
 <div class="netflix-slider">
-        <h2 class="category-title">Popular on Netflix</h2>
+        <h2 class="category-title">{{genreName}}</h2>
         <div class="swiper-container swiper">
                 <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                                <app-movie-item></app-movie-item>
+                        <div class="swiper-slide" *ngFor="let movie of AllMoviesbyGenre">
+                                <app-movie-item [movieTitle]="movie.original_title" [movieImage]="movie.backdrop_path">
+                                </app-movie-item>
                         </div>
                 </div>
                 <div class="swiper-button-next"></div>

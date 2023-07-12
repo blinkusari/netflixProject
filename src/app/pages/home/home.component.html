@@ -1,6 +1,4 @@
 <app-hero></app-hero>
 <div class="category-section">
-    <app-movie-swiper></app-movie-swiper>
-    <app-movie-swiper></app-movie-swiper>
-    <app-movie-swiper></app-movie-swiper>
+    <app-movie-swiper *ngFor="let genre of AllGenres" [genreId]="genre.id" [genreName]="genre.name"></app-movie-swiper>
 </div>

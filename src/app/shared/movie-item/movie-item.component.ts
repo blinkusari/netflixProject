@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MovieModalComponent } from '../movie-modal/movie-modal.component';
 
@@ -8,6 +8,12 @@ import { MovieModalComponent } from '../movie-modal/movie-modal.component';
   styleUrls: ['./movie-item.component.scss']
 })
 export class MovieItemComponent {
+
+  baseImgUrl= "https://image.tmdb.org/t/p/w500";
+  
+  @Input() movieTitle!: string;
+  @Input() movieImage!: string;
+
   constructor(private dialog: MatDialog) {}
 
   openModal(): void {

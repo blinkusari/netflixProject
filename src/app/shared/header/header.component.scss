@@ -54,6 +54,19 @@
                 border: none;
                 cursor: pointer;
             }
+            .close-button{
+                border: none;
+                cursor: pointer;
+                background-color: #fff;
+                border-radius: 50%;
+
+
+            }
+            .search-input{
+                background-color: #fff;
+                border-radius: 10px;
+                height: 30px;
+            }
         }
     }
 }

@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {Router} from '@angular/router';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {environment} from "../../environments/environment";
-import {User} from "../user";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from "../../environments/environment";
+import { User } from "../user";
 
 @Injectable({
   providedIn: 'root'
