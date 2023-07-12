@@ -12,7 +12,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  isSubmitted = false;
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -25,7 +24,6 @@ export class LoginComponent implements OnInit {
   }
 
   signIn() {
-    this.isSubmitted = true;
     if (this.loginForm.invalid) {
       return;
     }

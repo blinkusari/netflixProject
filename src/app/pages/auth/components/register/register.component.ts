@@ -15,15 +15,37 @@ export class RegisterComponent {
   constructor(private authService: AuthService, private router: Router, private formBuilder: FormBuilder) {
     this.registerForm = this.formBuilder.group({
       name: ['', Validators.required],
-      email: ['', Validators.required],
-      phone: ['', Validators.required],
-      password: ['', Validators.required],
-      password_confirmation: ['', Validators.required]
-    });
+      email: ['', [Validators.required, Validators.email]],
+      phone: ['', [Validators.required, Validators.pattern(/^\d{10}$/)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      password_confirmation: ['', [Validators.required, Validators.minLength(6)]]
+    },
+      {
+        validators: this.passwordConfirmationValidator,
+      });
   }
 
-  signUp(){
-    this.isSubmitted = true;
+  passwordConfirmationValidator(formGroup: FormGroup) {
+    const passwordControl = formGroup.get('password');
+    const passwordConfirmationControl = formGroup.get('password_confirmation');
+
+    if (!passwordControl || !passwordConfirmationControl) {
+      return null;
+    }
+
+    const password = passwordControl.value;
+    const passwordConfirmation = passwordConfirmationControl.value;
+
+    if (password !== passwordConfirmation) {
+      passwordConfirmationControl.setErrors({ mismatch: true });
+    } else {
+      passwordConfirmationControl.setErrors(null);
+    }
+
+    return null;
+  }
+
+  signUp() {
     if (this.registerForm.invalid) {
       return;
     }
