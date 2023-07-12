@@ -9,13 +9,18 @@ import { MovieModalComponent } from '../movie-modal/movie-modal.component';
 })
 export class MovieItemComponent {
 
-  baseImgUrl = "https://image.tmdb.org/t/p/w500";
-
+  baseImgUrl = "https://image.tmdb.org/t/p/w400";
+  movieImgUrl :any;
+  dummyUrl:string = "https://picsum.photos/500/281";
   @Input() movieTitle!: string;
   @Input() movieImage!: string;
 
   constructor(private dialog: MatDialog) { }
-
+  ngOnInit(){
+    if(this.movieImage){
+    this.movieImgUrl= this.baseImgUrl + this.movieImage;
+    }
+  }
   openModal(): void {
     const dialogRef = this.dialog.open(MovieModalComponent, {
       width: '1000px',
@@ -23,7 +28,7 @@ export class MovieItemComponent {
       height: '90vh',
       maxWidth: '90vw',
       data: {
-        movieImage: this.baseImgUrl + this.movieImage
+        movieImage: this.movieImgUrl? this.movieImgUrl : this.dummyUrl
       }
     });
 

@@ -66,9 +66,9 @@ export class MoviesService {
   }
 
 
-  getSearchMovies(keyword: string) {
+  getSearchMovies(keyword: string, pageIndex: number) {
     let parameters = {
-      page: 1,
+      page: pageIndex,
       query: keyword,
     };
 

@@ -1,4 +1,4 @@
 <div class="img-wrapper" (click)="openModal()">
-    <img [src]="baseImgUrl+movieImage"
+    <img [src]="movieImgUrl ? movieImgUrl : dummyUrl"
         [alt]="movieTitle">
 </div>
