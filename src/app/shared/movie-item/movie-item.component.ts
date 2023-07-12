@@ -9,24 +9,26 @@ import { MovieModalComponent } from '../movie-modal/movie-modal.component';
 })
 export class MovieItemComponent {
 
-  baseImgUrl= "https://image.tmdb.org/t/p/w500";
-  
+  baseImgUrl = "https://image.tmdb.org/t/p/w500";
+
   @Input() movieTitle!: string;
   @Input() movieImage!: string;
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog) { }
 
   openModal(): void {
     const dialogRef = this.dialog.open(MovieModalComponent, {
       width: '1000px',
       minWidth: '0px',
       height: '90vh',
-      maxWidth:'90vw',
-      data: { /* Optionally pass data to the modal component */ }
+      maxWidth: '90vw',
+      data: {
+        movieImage: this.baseImgUrl + this.movieImage
+      }
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // Handle any actions after the modal is closed, if needed
+
     });
   }
 }

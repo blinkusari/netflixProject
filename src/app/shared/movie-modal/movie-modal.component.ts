@@ -7,10 +7,14 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./movie-modal.component.scss']
 })
 export class MovieModalComponent {
+  movieImage: string;
+
   constructor(
     public dialogRef: MatDialogRef<MovieModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
+  ) {
+    this.movieImage = data.movieImage;
+  }
 
   closeDialog(): void {
     this.dialogRef.close();

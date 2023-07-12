@@ -11,9 +11,8 @@ export class HeaderComponent {
   showSearchInput: boolean = false;
   searchTerm: string = '';
 
-  constructor(private route: Router, private authService: AuthService) {
+  constructor(private route: Router, private authService: AuthService) { }
 
-  }
   logout() {
     localStorage.removeItem('access_token');
     this.route.navigateByUrl('/login');
@@ -25,6 +24,7 @@ export class HeaderComponent {
 
   closeSearchInput() {
     this.showSearchInput = false;
+    this.route.navigateByUrl('/home');
 
   }
 

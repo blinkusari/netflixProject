@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from "../../environments/environment";
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +38,15 @@ export class MoviesService {
   // }
 
   getGenres() {
-    return this.httpClient.get(`${environment.baseUrl}/genre/movie/list`);
+    return this.httpClient.get(`${environment.baseUrl}/genre/movie/list`)
+      .pipe(
+        map((response: any) => {
+          // Retrieve only the first 5 genres
+          const genres = response.genres.slice(0, 5);
+          response.genres = genres;
+          return response;
+        })
+      );
   }
 
   getAllMovieByGenres(id: string) {
