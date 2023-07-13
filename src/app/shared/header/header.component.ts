@@ -9,9 +9,11 @@ import { MoviesService } from 'src/app/services/movies.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
   showSearchInput: boolean = false;
   searchTerm: string = '';
   getAllSearchedMovies: any = []
+
   constructor(private route: Router, private authService: AuthService, private movieService: MoviesService) { }
 
   logout() {

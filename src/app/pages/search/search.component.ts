@@ -1,6 +1,6 @@
-import {Component, HostListener} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {MoviesService} from 'src/app/services/movies.service';
+import { Component, HostListener } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
   selector: 'app-search',
@@ -20,7 +20,7 @@ export class SearchComponent {
   }
 
   @HostListener('window:scroll', ['$event.target'])
-  async onWindowScroll(event) {
+  async onWindowScroll() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       if (!this.scrolledToBottom) {
         this.scrolledToBottom = true;
@@ -34,7 +34,7 @@ export class SearchComponent {
   ngOnInit() {
     this.route.queryParamMap.subscribe((params) => {
       this.searchTerm = params.get('term') || '';
-      console.log(this.searchTerm);
+      console.log("this.searchTerm", this.searchTerm);
     });
 
 
@@ -48,6 +48,9 @@ export class SearchComponent {
     const response: any = await this.movieService.getSearchMovies(this.searchTerm, 1).toPromise();
     this.searchedMovies = response.results;
     this.totalCount = response?.total_results;
+
+    console.log("this.searchedMovies", this.searchedMovies);
+
   }
 
   async getMovies(pageIndex) {

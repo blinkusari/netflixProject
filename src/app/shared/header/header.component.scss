@@ -37,6 +37,7 @@
                 li {
                     margin-left: 18px;
                     cursor: pointer;
+
                     a {
                         color: #e5e5e5;
                         text-decoration: none;
@@ -49,23 +50,28 @@
             display: flex;
             justify-content: end;
 
-            .search-button,.logout-button {
+            .search-button,
+            .logout-button {
                 background: transparent;
                 border: none;
                 cursor: pointer;
             }
-            .close-button{
+
+            .close-button {
                 border: none;
                 cursor: pointer;
                 background-color: #fff;
-                border-radius: 50%;
-
+                margin-right: 10px;
 
             }
-            .search-input{
-                background-color: #fff;
-                border-radius: 10px;
+
+            .search-input {
+                background-color: #0000009e;
                 height: 30px;
+                color: white;
+                border: 1px solid #fff;
+                padding: 10px;
+                margin-right: 5px;
             }
         }
     }

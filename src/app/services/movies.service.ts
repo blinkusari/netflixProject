@@ -16,31 +16,6 @@ export class MoviesService {
   setSearchTerm(searchTerm: string) {
     this.searchTermSubject.next(searchTerm);
   }
-  // getMovies(){
-  //   let parameters = {
-  //     page: 1,
-  //     include_adult: false
-  //   };
-  //   let queryParams = new HttpParams({ fromObject: parameters });
-
-  //   return this.httpClient.get(`${environment.baseUrl}/discover/movie`, { params: queryParams })
-  //     .subscribe((res: any) => {
-  //       console.log('getMovies', res)
-  //     });
-  // }
-
-  // getPopularMovies(){
-  //   let parameters = {
-  //     page: 1,
-  //     include_adult: false
-  //   };
-  //   let queryParams = new HttpParams({ fromObject: parameters });
-
-  //   return this.httpClient.get(`${environment.baseUrl}/movie/popular`, { params: queryParams })
-  //     .subscribe((res: any) => {
-  //       console.log('getPopularMovies', res)
-  //     });
-  // }
 
   getGenres() {
     return this.httpClient.get(`${environment.baseUrl}/genre/movie/list`)
