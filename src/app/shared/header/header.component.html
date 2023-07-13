@@ -28,7 +28,7 @@
                         fill="#ffffff"></path>
                 </svg>
             </button>
-            <input class="search-input" *ngIf="showSearchInput" type="text" [(ngModel)]="searchTerm"
+            <input class="search-input" *ngIf="showSearchInput" type="text" [(ngModel)]="searchTerm" autofocus
                 (keyup)="performSearch()" placeholder="Search movies">
             <button *ngIf="showSearchInput" class="close-button" (click)="closeSearchInput()">
                 <svg height="14" fill="#fffff" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1"
