@@ -14,6 +14,7 @@ export class MovieItemComponent {
   dummyUrl:string = "https://picsum.photos/500/281";
   @Input() movieTitle!: string;
   @Input() movieImage!: string;
+  @Input() movieOverview!: string;
 
   constructor(private dialog: MatDialog) { }
   ngOnInit(){
@@ -28,7 +29,10 @@ export class MovieItemComponent {
       height: '90vh',
       maxWidth: '90vw',
       data: {
-        movieImage: this.movieImgUrl? this.movieImgUrl : this.dummyUrl
+        movieImage: this.movieImgUrl? this.movieImgUrl : this.dummyUrl,
+        movieTitle: this.movieTitle,
+        movieOverview: this.movieOverview,
+
       }
     });
 

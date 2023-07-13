@@ -8,12 +8,17 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class MovieModalComponent {
   movieImage: string;
+  movieTitle: string;
+  movieOverview: string;
 
   constructor(
     public dialogRef: MatDialogRef<MovieModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     this.movieImage = data.movieImage;
+    this.movieTitle = data.movieTitle;
+    this.movieOverview = data.movieOverview;
+
   }
 
   closeDialog(): void {

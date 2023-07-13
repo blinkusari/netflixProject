@@ -3,7 +3,7 @@
         <div class="swiper-container swiper">
                 <div class="swiper-wrapper">
                         <div class="swiper-slide" *ngFor="let movie of AllMoviesbyGenre">
-                                <app-movie-item [movieTitle]="movie.original_title" [movieImage]="movie.backdrop_path">
+                                <app-movie-item [movieTitle]="movie.original_title" [movieOverview]="movie.overview" [movieImage]="movie.backdrop_path">
                                 </app-movie-item>
                         </div>
                 </div>
