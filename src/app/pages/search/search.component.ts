@@ -51,6 +51,10 @@ export class SearchComponent {
     if (this.searchedMovies.length + 20 >= this.totalCount) {
       this.loader = false;
     }
+    else {
+      this.loader = true;
+
+    }
     console.log("this.searchedMovies", this.searchedMovies);
 
   }
@@ -66,14 +70,12 @@ export class SearchComponent {
 
   async onScrollLoadData() {
     if (this.searchedMovies.length !== this.totalCount) {
-      console.log("this.searchedMovies.length",this.searchedMovies.length)
-      console.log("this.totalCount",this.totalCount)
-
       this.pageIndex += 1;
-      this.loader=true;
       await this.getMovies(this.pageIndex);
+    } else {
+      this.loader = false;
 
-      
+
     }
   }
 }
