@@ -15,7 +15,7 @@ export class SearchComponent {
   pageIndex = 1;
   pageSize = 20;
   scrolledToBottom = false;
-
+  loader = false;
   constructor(private route: ActivatedRoute, private movieService: MoviesService) {
   }
 
@@ -48,7 +48,9 @@ export class SearchComponent {
     const response: any = await this.movieService.getSearchMovies(this.searchTerm, 1).toPromise();
     this.searchedMovies = response.results;
     this.totalCount = response?.total_results;
-
+    if (this.searchedMovies.length + 20 >= this.totalCount) {
+      this.loader = false;
+    }
     console.log("this.searchedMovies", this.searchedMovies);
 
   }
@@ -64,8 +66,14 @@ export class SearchComponent {
 
   async onScrollLoadData() {
     if (this.searchedMovies.length !== this.totalCount) {
+      console.log("this.searchedMovies.length",this.searchedMovies.length)
+      console.log("this.totalCount",this.totalCount)
+
       this.pageIndex += 1;
+      this.loader=true;
       await this.getMovies(this.pageIndex);
+
+      
     }
   }
 }

@@ -152,7 +152,12 @@
                 <app-movie-item [movieTitle]="movie.original_title" [movieImage]="movie.backdrop_path"
                     [movieOverview]="movie.overview"></app-movie-item>
             </div>
+        </div>
+        <div *ngIf="loader" class="row position-relative justify-content-center align-items-center my-5">
 
+            <div class="spinner-border" role="status">
+                <span class="sr-only" id="loading"></span>
+            </div>
         </div>
     </div>
 </div>
