@@ -149,8 +149,8 @@
 
         <div class="row">
             <div class="item-wrapper col-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let movie of searchedMovies">
-                <app-movie-item [movieTitle]="movie.original_title" [movieImage]="movie.backdrop_path"
-                    [movieOverview]="movie.overview"></app-movie-item>
+                <app-movie-item (action)="handleMovieItemClick($event)" [movieTitle]="movie.original_title" [movieImage]="movie.backdrop_path"
+                    [movieOverview]="movie.overview" [movieId]="movie.id"></app-movie-item>
             </div>
         </div>
         <div *ngIf="loader" class="row position-relative justify-content-center align-items-center my-5">

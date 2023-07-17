@@ -2,6 +2,8 @@ import { Component, Input } from '@angular/core';
 import { MoviesService } from 'src/app/core/services/movies.service';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MovieModalComponent } from '../movie-modal/movie-modal.component';
 
 @Component({
   selector: 'app-movie-swiper',
@@ -12,8 +14,11 @@ export class MovieSwiperComponent {
 
   @Input() genreId!: string;
   @Input() genreName!: string;
-  allMoviesbyGenre:any = [];
-  constructor(private moviesService: MoviesService) { }
+  allMoviesbyGenre: any = [];
+  baseImgUrl = "https://image.tmdb.org/t/p/w400";
+  movieImgUrl: any;
+  dummyUrl: string = "https://picsum.photos/500/281";
+  constructor(private moviesService: MoviesService, private dialog: MatDialog) { }
 
   swiper: Swiper = new Swiper('.swiper', {});
 
@@ -51,7 +56,40 @@ export class MovieSwiperComponent {
       .subscribe((res: any) => {
         console.log('getPopularMovies', res)
         this.allMoviesbyGenre = res.results;
-        console.log("this.AllMoviesbyGenre",this.allMoviesbyGenre)
+        console.log("this.AllMoviesbyGenre", this.allMoviesbyGenre)
       });
+  }
+
+  getClickedMovie(id) {
+    const movieById = this.allMoviesbyGenre.filter(movie => movie.id === id);
+    return movieById.shift();
+  }
+
+  handleMovieItemClick(movieId: string) {
+    this.openModal(movieId);
+  }
+
+  openModal(id): void {
+    let movie = this.getClickedMovie(id);
+
+    if (movie.backdrop_path) {
+      this.movieImgUrl = this.baseImgUrl + movie.backdrop_path;
+    }
+    const dialogRef = this.dialog.open(MovieModalComponent, {
+      width: '1000px',
+      minWidth: '0px',
+      height: '90vh',
+      maxWidth: '90vw',
+      data: {
+        movieImage: this.movieImgUrl ? this.movieImgUrl : this.dummyUrl,
+        movieTitle: movie.original_title,
+        movieOverview: movie.overview,
+
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
   }
 }

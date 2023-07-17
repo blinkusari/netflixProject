@@ -1,6 +1,8 @@
 import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from 'src/app/core/services/movies.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MovieModalComponent } from 'src/app/shared/movie-modal/movie-modal.component';
 
 @Component({
   selector: 'app-search',
@@ -16,7 +18,10 @@ export class SearchComponent {
   pageSize = 20;
   scrolledToBottom = false;
   loader = false;
-  constructor(private route: ActivatedRoute, private movieService: MoviesService) {
+  baseImgUrl = "https://image.tmdb.org/t/p/w400";
+  movieImgUrl: any;
+  dummyUrl: string = "https://picsum.photos/500/281";
+  constructor(private route: ActivatedRoute, private movieService: MoviesService, private dialog: MatDialog) {
   }
 
   @HostListener('window:scroll', ['$event.target'])
@@ -77,5 +82,38 @@ export class SearchComponent {
 
 
     }
+  }
+
+  getClickedMovie(id) {
+    const movieById = this.searchedMovies.filter(movie => movie.id === id);
+    return movieById.shift();
+  }
+
+  handleMovieItemClick(movieId: string) {
+    this.openModal(movieId);
+  }
+
+  openModal(id): void {
+    let movie = this.getClickedMovie(id);
+    
+    if (movie.backdrop_path) {
+      this.movieImgUrl = this.baseImgUrl + movie.backdrop_path;
+    }
+    const dialogRef = this.dialog.open(MovieModalComponent, {
+      width: '1000px',
+      minWidth: '0px',
+      height: '90vh',
+      maxWidth: '90vw',
+      data: {
+        movieImage: this.movieImgUrl ? this.movieImgUrl : this.dummyUrl,
+        movieTitle: movie.original_title,
+        movieOverview: movie.overview,
+
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
   }
 }
