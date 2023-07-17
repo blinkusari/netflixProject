@@ -13,7 +13,7 @@ import { SharedModule } from './shared/shared.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
-import {BaseInterceptor} from "./base.interceptor";
+import {BaseInterceptor} from "./core/interceptors/base.interceptor";
 
 @NgModule({
   declarations: [

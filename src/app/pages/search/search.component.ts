@@ -1,6 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MoviesService } from 'src/app/services/movies.service';
+import { MoviesService } from 'src/app/core/services/movies.service';
 
 @Component({
   selector: 'app-search',

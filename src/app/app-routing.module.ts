@@ -6,7 +6,7 @@ import { RegisterComponent } from './pages/auth/components/register/register.com
 import { HomeComponent } from './pages/home/home.component';
 import { SearchComponent } from './pages/search/search.component';
 import { AuthComponent } from './pages/auth/auth.component';
-import { AuthGuard } from './auth.guards';
+import { AuthGuard } from './core/guards/auth.guards';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },

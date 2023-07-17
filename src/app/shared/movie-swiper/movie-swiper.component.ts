@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MoviesService } from 'src/app/services/movies.service';
+import { MoviesService } from 'src/app/core/services/movies.service';
 import Swiper from 'swiper';
 import { Navigation, Pagination } from 'swiper/modules';
 
@@ -12,7 +12,7 @@ export class MovieSwiperComponent {
 
   @Input() genreId!: string;
   @Input() genreName!: string;
-  AllMoviesbyGenre:any = [];
+  allMoviesbyGenre:any = [];
   constructor(private moviesService: MoviesService) { }
 
   swiper: Swiper = new Swiper('.swiper', {});
@@ -50,8 +50,8 @@ export class MovieSwiperComponent {
     this.moviesService.getAllMovieByGenres(this.genreId)
       .subscribe((res: any) => {
         console.log('getPopularMovies', res)
-        this.AllMoviesbyGenre = res.results;
-        console.log("this.AllMoviesbyGenre",this.AllMoviesbyGenre)
+        this.allMoviesbyGenre = res.results;
+        console.log("this.AllMoviesbyGenre",this.allMoviesbyGenre)
       });
   }
 }
