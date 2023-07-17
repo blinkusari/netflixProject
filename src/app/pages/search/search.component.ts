@@ -95,9 +95,11 @@ export class SearchComponent {
 
   openModal(id): void {
     let movie = this.getClickedMovie(id);
-    
+
     if (movie.backdrop_path) {
       this.movieImgUrl = this.baseImgUrl + movie.backdrop_path;
+    } else {
+      this.movieImgUrl = this.dummyUrl
     }
     const dialogRef = this.dialog.open(MovieModalComponent, {
       width: '1000px',
@@ -105,10 +107,9 @@ export class SearchComponent {
       height: '90vh',
       maxWidth: '90vw',
       data: {
-        movieImage: this.movieImgUrl ? this.movieImgUrl : this.dummyUrl,
+        movieImage: this.movieImgUrl,
         movieTitle: movie.original_title,
         movieOverview: movie.overview,
-
       }
     });
 
