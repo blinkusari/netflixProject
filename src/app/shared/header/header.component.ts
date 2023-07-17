@@ -13,7 +13,7 @@ export class HeaderComponent {
   showSearchInput: boolean = false;
   searchTerm: string = '';
   getAllSearchedMovies: any = []
-
+  searchTimeout: any;
   constructor(private route: Router, private authService: AuthService, private movieService: MoviesService) { }
 
   logout() {
@@ -33,12 +33,15 @@ export class HeaderComponent {
   }
 
   performSearch() {
-    if (this.searchTerm.trim() !== '') {
-      this.route.navigate(['/search'], { queryParams: { term: this.searchTerm } });
-      this.movieService.setSearchTerm(this.searchTerm);
-    } else {
-      this.route.navigateByUrl('/home');
-    }
+    clearTimeout(this.searchTimeout);
+    this.searchTimeout = setTimeout(() => {
+      if (this.searchTerm.trim() !== '') {
+        this.route.navigate(['/search'], { queryParams: { term: this.searchTerm } });
+        this.movieService.setSearchTerm(this.searchTerm);
+      } else {
+        this.route.navigateByUrl('/home');
+      }
+    }, 1000);
   }
 
 
