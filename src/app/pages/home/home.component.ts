@@ -7,7 +7,7 @@ import { MoviesService } from "../../services/movies.service";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  AllGenres: any = [];
+  allGenres: any = [];
   constructor(private moviesService: MoviesService) {
 
   }
@@ -17,8 +17,8 @@ export class HomeComponent {
 
   getGenres() {
     this.moviesService.getGenres().subscribe((res: any) => {
-      this.AllGenres = res.genres;
-      console.log("this.AllGenres",this.AllGenres)
+      this.allGenres = res.genres;
+      console.log("this.AllGenres",this.allGenres)
     });
   }
 

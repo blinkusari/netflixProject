@@ -21,7 +21,6 @@ export class MoviesService {
     return this.httpClient.get(`${environment.baseUrl}/genre/movie/list`)
       .pipe(
         map((response: any) => {
-          // Retrieve only the first 5 genres
           const genres = response.genres.slice(0, 5);
           response.genres = genres;
           return response;
