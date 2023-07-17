@@ -34,6 +34,7 @@ export class HeaderComponent {
 
   performSearch() {
     clearTimeout(this.searchTimeout);
+    this.route.navigate(['/search']);
     this.searchTimeout = setTimeout(() => {
       if (this.searchTerm.trim() !== '') {
         this.route.navigate(['/search'], { queryParams: { term: this.searchTerm } });
