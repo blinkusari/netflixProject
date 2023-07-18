@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from 'src/app/core/services/movies.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MovieModalComponent } from 'src/app/shared/movie-modal/movie-modal.component';
+import {Movie} from "../../shared/interfaces/genre";
 
 @Component({
   selector: 'app-search',
@@ -10,7 +11,7 @@ import { MovieModalComponent } from 'src/app/shared/movie-modal/movie-modal.comp
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
-  searchedMovies: any = [];
+  searchedMovies: Movie[] = [];
   searchTerm: string = '';
   totalCount = 0;
   pageIndex = 1;

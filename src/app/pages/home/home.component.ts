@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MoviesService } from "../../core/services/movies.service";
 import {MovieModalComponent} from "../../shared/movie-modal/movie-modal.component";
 import {MatDialog} from "@angular/material/dialog";
+import {Genre} from "../../shared/interfaces/genre";
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import {MatDialog} from "@angular/material/dialog";
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  moviesByGenre: any[] = [];
+  moviesByGenre: Genre[] = [];
 
   constructor(private moviesService: MoviesService, private dialog: MatDialog) {}
 

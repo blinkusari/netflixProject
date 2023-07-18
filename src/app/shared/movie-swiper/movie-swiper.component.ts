@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import Swiper from 'swiper';
 import {Navigation, Pagination} from 'swiper/modules';
+import {Genre, Movie} from "../interfaces/genre";
 
 @Component({
   selector: 'app-movie-swiper',
@@ -9,10 +10,10 @@ import {Navigation, Pagination} from 'swiper/modules';
 })
 export class MovieSwiperComponent {
   baseImgUrl = "https://image.tmdb.org/t/p/w400";
-  movieImgUrl: any;
+  movieImgUrl: string;
   dummyUrl: string = "https://picsum.photos/500/281";
-  @Input() genre: any;
-  @Output() selectedMovie = new EventEmitter<any>();
+  @Input() genre: Genre;
+  @Output() selectedMovie = new EventEmitter<Movie>();
 
   constructor() {
   }
@@ -46,7 +47,7 @@ export class MovieSwiperComponent {
     });
   }
 
-  selectMovie(movie: any) {
+  selectMovie(movie: Movie) {
     this.selectedMovie.emit(movie)
   }
 }
