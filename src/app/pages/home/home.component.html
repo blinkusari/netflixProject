@@ -1,4 +1,7 @@
 <app-hero></app-hero>
 <div class="category-section">
-    <app-movie-swiper *ngFor="let genre of allGenres" [genreId]="genre.id" [genreName]="genre.name"></app-movie-swiper>
+  <ng-container *ngFor="let genre of moviesByGenre">
+    <app-movie-swiper [genre]="genre" (selectedMovie)="openModal($event)">
+    </app-movie-swiper>
+  </ng-container>
 </div>

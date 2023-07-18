@@ -1,9 +1,6 @@
-import { Component, Input } from '@angular/core';
-import { MoviesService } from 'src/app/core/services/movies.service';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import Swiper from 'swiper';
-import { Navigation, Pagination } from 'swiper/modules';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { MovieModalComponent } from '../movie-modal/movie-modal.component';
+import {Navigation, Pagination} from 'swiper/modules';
 
 @Component({
   selector: 'app-movie-swiper',
@@ -11,20 +8,18 @@ import { MovieModalComponent } from '../movie-modal/movie-modal.component';
   styleUrls: ['./movie-swiper.component.scss']
 })
 export class MovieSwiperComponent {
-
-  @Input() genreId!: string;
-  @Input() genreName!: string;
-  allMoviesbyGenre: any = [];
   baseImgUrl = "https://image.tmdb.org/t/p/w400";
   movieImgUrl: any;
   dummyUrl: string = "https://picsum.photos/500/281";
-  constructor(private moviesService: MoviesService, private dialog: MatDialog) { }
+  @Input() genre: any;
+  @Output() selectedMovie = new EventEmitter<any>();
+
+  constructor() {
+  }
 
   swiper: Swiper = new Swiper('.swiper', {});
 
   ngOnInit() {
-    this.getAllMoviesByGenres();
-
     this.swiper = new Swiper('.swiper', {
       slidesPerView: 2,
       spaceBetween: 5,
@@ -51,47 +46,7 @@ export class MovieSwiperComponent {
     });
   }
 
-  getAllMoviesByGenres() {
-    this.moviesService.getAllMovieByGenres(this.genreId)
-      .subscribe((res: any) => {
-        console.log('getPopularMovies', res)
-        this.allMoviesbyGenre = res.results;
-        console.log("this.AllMoviesbyGenre", this.allMoviesbyGenre)
-      });
-  }
-
-  getClickedMovie(id) {
-    const movieById = this.allMoviesbyGenre.filter(movie => movie.id === id);
-    return movieById.shift();
-  }
-
-  handleMovieItemClick(movieId: string) {
-    this.openModal(movieId);
-  }
-
-  openModal(id): void {
-    let movie = this.getClickedMovie(id);
-
-    if (movie.backdrop_path) {
-      this.movieImgUrl = this.baseImgUrl + movie.backdrop_path;
-    } else {
-      this.movieImgUrl = this.dummyUrl
-    }
-    const dialogRef = this.dialog.open(MovieModalComponent, {
-      width: '1000px',
-      minWidth: '0px',
-      height: '90vh',
-      maxWidth: '90vw',
-      data: {
-        movieImage: this.movieImgUrl,
-        movieTitle: movie.original_title,
-        movieOverview: movie.overview,
-
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-
-    });
+  selectMovie(movie: any) {
+    this.selectedMovie.emit(movie)
   }
 }

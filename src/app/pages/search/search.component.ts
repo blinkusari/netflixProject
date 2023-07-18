@@ -12,15 +12,12 @@ import { MovieModalComponent } from 'src/app/shared/movie-modal/movie-modal.comp
 export class SearchComponent {
   searchedMovies: any = [];
   searchTerm: string = '';
-
   totalCount = 0;
   pageIndex = 1;
   pageSize = 20;
   scrolledToBottom = false;
   loader = false;
-  baseImgUrl = "https://image.tmdb.org/t/p/w400";
-  movieImgUrl: any;
-  dummyUrl: string = "https://picsum.photos/500/281";
+
   constructor(private route: ActivatedRoute, private movieService: MoviesService, private dialog: MatDialog) {
   }
 
@@ -79,35 +76,17 @@ export class SearchComponent {
       await this.getMovies(this.pageIndex);
     } else {
       this.loader = false;
-
-
     }
   }
 
-  getClickedMovie(id) {
-    const movieById = this.searchedMovies.filter(movie => movie.id === id);
-    return movieById.shift();
-  }
-
-  handleMovieItemClick(movieId: string) {
-    this.openModal(movieId);
-  }
-
-  openModal(id): void {
-    let movie = this.getClickedMovie(id);
-
-    if (movie.backdrop_path) {
-      this.movieImgUrl = this.baseImgUrl + movie.backdrop_path;
-    } else {
-      this.movieImgUrl = this.dummyUrl
-    }
+  openModal(movie): void {
     const dialogRef = this.dialog.open(MovieModalComponent, {
       width: '1000px',
       minWidth: '0px',
       height: '90vh',
       maxWidth: '90vw',
       data: {
-        movieImage: this.movieImgUrl,
+        movieImage: movie.backdrop_path,
         movieTitle: movie.original_title,
         movieOverview: movie.overview,
       }

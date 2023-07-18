@@ -7,6 +7,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./movie-modal.component.scss']
 })
 export class MovieModalComponent {
+  baseImgUrl = "https://image.tmdb.org/t/p/original";
+  dummyImgUrl: string = "https://picsum.photos/500/281";
   movieImage: string;
   movieTitle: string;
   movieOverview: string;
@@ -15,7 +17,7 @@ export class MovieModalComponent {
     public dialogRef: MatDialogRef<MovieModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    this.movieImage = data.movieImage;
+    this.movieImage = data.movieImage ? this.baseImgUrl + data.movieImage : this.dummyImgUrl;
     this.movieTitle = data.movieTitle;
     this.movieOverview = data.movieOverview;
 

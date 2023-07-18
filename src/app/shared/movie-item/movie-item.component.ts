@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-movie-item',
@@ -6,25 +6,18 @@ import { Component, EventEmitter, Inject, Input, Output } from '@angular/core';
   styleUrls: ['./movie-item.component.scss']
 })
 export class MovieItemComponent {
+  baseImgUrl = "https://image.tmdb.org/t/p/w300";
+  dummyImgUrl: string = "https://picsum.photos/300/168";
 
-  baseImgUrl = "https://image.tmdb.org/t/p/w400";
-  movieImgUrl: any;
-  dummyUrl: string = "https://picsum.photos/500/281";
-  @Input() movieTitle!: string;
-  @Input() movieImage!: string;
-  @Input() movieOverview!: string;
-  @Input() movieId!: string;
+  @Input() title: string = '';
 
-  @Output() action: EventEmitter<any> = new EventEmitter();
-
-  constructor() { }
-  ngOnInit() {
-    if (this.movieImage) {
-      this.movieImgUrl = this.baseImgUrl + this.movieImage;
-    }
+  _imageUrl: string = '';
+  @Input() set imageUrl(value: string) {
+    this._imageUrl = value ? (this.baseImgUrl + value) : this.dummyImgUrl;
   }
-  handleClick() {
-    this.action.emit(this.movieId);
+  get imageUrl(): string {
+    return this._imageUrl;
   }
 
+  constructor() {}
 }

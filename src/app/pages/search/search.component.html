@@ -1,163 +1,160 @@
 <div class="search-section">
-    <div class="search-wrapper">
-        <div class="suggested-wrapper">
-            <p class="explore">More to explore:</p>
-            <ul class="search-list">
-                <li>
-                    <a href="">
-                        test 1
-                    </a>
+  <div class="search-wrapper">
+    <div class="suggested-wrapper">
+      <p class="explore">More to explore:</p>
+      <ul class="search-list">
+        <li>
+          <a href="">
+            test 1
+          </a>
 
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        test 2
-                    </a>
-                </li>
-
-
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
+        <li>
+          <a href="">
+            test 2
+          </a>
+        </li>
 
 
-
-            </ul>
-        </div>
-
-        <div class="row">
-            <div class="item-wrapper col-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let movie of searchedMovies">
-                <app-movie-item (action)="handleMovieItemClick($event)" [movieTitle]="movie.original_title" [movieImage]="movie.backdrop_path"
-                    [movieOverview]="movie.overview" [movieId]="movie.id"></app-movie-item>
-            </div>
-        </div>
-        <div *ngIf="loader" class="row position-relative justify-content-center align-items-center my-5">
-
-            <div class="spinner-border" role="status">
-                <span class="sr-only" id="loading"></span>
-            </div>
-        </div>
+      </ul>
     </div>
+
+    <div class="row">
+      <div class="item-wrapper col-6 col-sm-4 col-md-3 col-lg-2" *ngFor="let movie of searchedMovies">
+        <app-movie-item [title]="movie.original_title" [imageUrl]="movie.backdrop_path"
+                        (click)="openModal(movie)"></app-movie-item>
+      </div>
+    </div>
+    <div *ngIf="loader" class="row position-relative justify-content-center align-items-center my-5">
+
+      <div class="spinner-border" role="status">
+        <span class="sr-only" id="loading"></span>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,14 +1,14 @@
 <div class="netflix-slider">
-        <h2 class="category-title">{{genreName}}</h2>
-        <div class="swiper-container swiper">
-                <div class="swiper-wrapper">
-                        <div class="swiper-slide" *ngFor="let movie of allMoviesbyGenre">
-                                <app-movie-item (action)="handleMovieItemClick($event)" [movieTitle]="movie.original_title" [movieOverview]="movie.overview" [movieId]="movie.id"
-                                        [movieImage]="movie.backdrop_path">
-                                </app-movie-item>
-                        </div>
-                </div>
-                <div class="swiper-button-next"></div>
-                <div class="swiper-button-prev"></div>
-        </div>
+  <h2 class="category-title">{{ genre.name }}</h2>
+  <div class="swiper-container swiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let movie of genre.movies">
+        <app-movie-item (click)="selectMovie(movie)" [title]="movie.original_title"
+                        [imageUrl]="movie.backdrop_path">
+        </app-movie-item>
+      </div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+  </div>
 </div>
