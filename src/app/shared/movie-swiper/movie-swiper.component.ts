@@ -22,6 +22,7 @@ export class MovieSwiperComponent {
 
   ngOnInit() {
     this.swiper = new Swiper('.swiper', {
+      lazy: true,
       slidesPerView: 2,
       spaceBetween: 5,
       modules: [Navigation, Pagination],
