@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeroComponent } from './components/hero/hero.component';
 import { HomeComponent } from './home.component';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { TranslocoRootModule } from 'src/app/transloco-root.module';
 
 
 
@@ -13,7 +14,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
   ],
   imports: [
     CommonModule,
-    SharedModule
+    SharedModule,
+    TranslocoRootModule
   ],
   exports: [
   ]

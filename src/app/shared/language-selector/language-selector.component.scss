@@ -1,0 +1,24 @@
+.wrapper {
+    display: flex;
+
+    button {
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        border: none;
+        margin-left: 15px;
+        padding: 5px 0;
+
+        img {
+            width: 25px;
+        }
+
+        span {
+            color: #fff;
+        }
+
+        &.active {
+            border-bottom: 1px solid white;
+        }
+    }
+}

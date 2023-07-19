@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MovieModalComponent } from './movie-modal/movie-modal.component';
 import { MovieItemComponent } from './movie-item/movie-item.component';
 import { MovieSwiperComponent } from './movie-swiper/movie-swiper.component';
+import { LanguageSelectorComponent } from './language-selector/language-selector.component';
 
 
 
@@ -10,7 +11,8 @@ import { MovieSwiperComponent } from './movie-swiper/movie-swiper.component';
   declarations: [
     MovieModalComponent,
     MovieItemComponent,
-    MovieSwiperComponent
+    MovieSwiperComponent,
+    LanguageSelectorComponent
   ],
   imports: [
     CommonModule
@@ -18,7 +20,8 @@ import { MovieSwiperComponent } from './movie-swiper/movie-swiper.component';
   exports: [
     MovieModalComponent,
     MovieItemComponent,
-    MovieSwiperComponent
+    MovieSwiperComponent,
+    LanguageSelectorComponent
   ]
 })
 export class SharedModule { }

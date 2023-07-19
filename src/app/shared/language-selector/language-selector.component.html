@@ -1,0 +1,6 @@
+<div class="wrapper flex justify-center items-center">
+    <button *ngFor="let language of languagesList; index as i" class="flex flex-col items-center"
+        [class.active]="language.code === activeLanguageCode" (click)="changeLanguage(language.code)">
+        <img [src]="language.imgUrl" [alt]="language.name" />
+    </button>
+</div>
