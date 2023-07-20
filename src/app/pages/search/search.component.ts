@@ -43,7 +43,7 @@ export class SearchComponent {
 
 
     this.movieService.searchTerm$
-      .pipe(debounceTime(2000))
+      .pipe(debounceTime(1000))
       .subscribe((searchTerm) => {
         this.searchTerm = searchTerm;
         this.searchMovies().then();
