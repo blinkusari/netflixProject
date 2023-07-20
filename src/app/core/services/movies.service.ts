@@ -17,8 +17,8 @@ export class MoviesService {
     this.searchTermSubject.next(searchTerm);
   }
 
-  getGenres() {
-    return this.httpClient.get(`${environment.baseUrl}/genre/movie/list`)
+  getGenres(activeLanguageCode: string) {
+    return this.httpClient.get(`${environment.baseUrl}/genre/movie/list?language=` + activeLanguageCode)
       .pipe(
         map((response: any) => {
           const genres = response.genres.slice(0, 5);

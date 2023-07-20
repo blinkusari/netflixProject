@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { MoviesService } from "../../core/services/movies.service";
-import {MovieModalComponent} from "../../shared/movie-modal/movie-modal.component";
-import {MatDialog} from "@angular/material/dialog";
-import {Genre} from "../../shared/interfaces/genre";
+import { MovieModalComponent } from "../../shared/movie-modal/movie-modal.component";
+import { MatDialog } from "@angular/material/dialog";
+import { Genre } from "../../shared/interfaces/genre";
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-home',
@@ -12,24 +13,32 @@ import {Genre} from "../../shared/interfaces/genre";
 export class HomeComponent {
   moviesByGenre: Genre[] = [];
 
-  constructor(private moviesService: MoviesService, private dialog: MatDialog) {}
+  constructor(
+    private moviesService: MoviesService,
+    private dialog: MatDialog,
+    private translocoService: TranslocoService
+  ) { }
 
   ngOnInit() {
-    this.getGenres();
+    this.translocoService.langChanges$.subscribe((event) => {
+      this.getGenres();
+    });
   }
 
   getGenres() {
-    this.moviesService.getGenres().subscribe((res: any) => {
+    const activeLanguageCode = this.translocoService.getActiveLang();
+
+    this.moviesService.getGenres(activeLanguageCode).subscribe((res: any) => {
       res.genres.forEach((genre: any) => {
-        this.moviesService.getAllMovieByGenres(genre.id)
-          .subscribe((moviesRes: any) => {
-            genre.movies = moviesRes.results;
-          });
+        this.moviesService.getAllMovieByGenres(genre.id).subscribe((moviesRes: any) => {
+          genre.movies = moviesRes.results;
+        });
       });
       console.log('res.', res.genres)
       this.moviesByGenre = res.genres;
     });
   }
+
 
   openModal(movie: any): void {
     const dialogRef = this.dialog.open(MovieModalComponent, {
