@@ -1,9 +1,10 @@
 import { Component, HostListener } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from 'src/app/core/services/movies.service';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { MovieModalComponent } from 'src/app/shared/movie-modal/movie-modal.component';
 import { Movie } from "../../shared/interfaces/genre";
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-search',
@@ -41,10 +42,12 @@ export class SearchComponent {
     });
 
 
-    this.movieService.searchTerm$.subscribe((searchTerm) => {
-      this.searchTerm = searchTerm;
-      this.searchMovies().then();
-    });
+    this.movieService.searchTerm$
+      .pipe(debounceTime(2000))
+      .subscribe((searchTerm) => {
+        this.searchTerm = searchTerm;
+        this.searchMovies().then();
+      });
   }
 
   async searchMovies() {

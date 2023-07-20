@@ -33,18 +33,13 @@ export class HeaderComponent {
   }
 
   performSearch() {
-    clearTimeout(this.searchTimeout);
     this.route.navigate(['/search']);
-    this.searchTimeout = setTimeout(() => {
-      if (this.searchTerm.trim() !== '') {
-        this.route.navigate(['/search'], { queryParams: { term: this.searchTerm } });
-        this.movieService.setSearchTerm(this.searchTerm);
-      } else {
-        this.route.navigateByUrl('/home');
-      }
-    }, 1000);
+    if (this.searchTerm.trim() !== '') {
+      this.route.navigate(['/search'], { queryParams: { term: this.searchTerm } });
+      this.movieService.setSearchTerm(this.searchTerm);
+    } else {
+      this.route.navigateByUrl('/home');
+    }
   }
-
-
 
 }

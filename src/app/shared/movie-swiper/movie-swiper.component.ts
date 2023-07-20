@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import Swiper from 'swiper';
-import {Navigation, Pagination} from 'swiper/modules';
-import {Genre, Movie} from "../interfaces/genre";
+import { Navigation, Pagination } from 'swiper/modules';
+import { Genre, Movie } from "../interfaces/genre";
 
 @Component({
   selector: 'app-movie-swiper',

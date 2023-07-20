@@ -3,8 +3,7 @@
   <div class="swiper-container swiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide" *ngFor="let movie of genre.movies">
-        <app-movie-item (click)="selectMovie(movie)" [title]="movie.original_title"
-                        [imageUrl]="movie.backdrop_path">
+        <app-movie-item (click)="selectMovie(movie)" [title]="movie.original_title" [imageUrl]="movie.backdrop_path">
         </app-movie-item>
         <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
       </div>
