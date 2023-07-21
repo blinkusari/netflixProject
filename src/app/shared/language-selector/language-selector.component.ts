@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
@@ -6,7 +6,7 @@ import { TranslocoService } from '@ngneat/transloco';
   templateUrl: './language-selector.component.html',
   styleUrls: ['./language-selector.component.scss']
 })
-export class LanguageSelectorComponent {
+export class LanguageSelectorComponent implements OnInit {
   constructor(private translocoService: TranslocoService) {
 
   }

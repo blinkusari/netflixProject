@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MoviesService } from "../../core/services/movies.service";
 import { MovieModalComponent } from "../../shared/movie-modal/movie-modal.component";
 import { MatDialog } from "@angular/material/dialog";
@@ -10,7 +10,7 @@ import { TranslocoService } from '@ngneat/transloco';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   moviesByGenre: Genre[] = [];
 
   constructor(
