@@ -102,8 +102,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   openModal(movie): void {
     const dialogRef = this.dialog.open(MovieModalComponent, {
+      width: '90vw',
       height: '90vh',
-      maxWidth: '90vw',
+      minWidth: '300px',
       data: {
         movieImage: movie.backdrop_path,
         movieTitle: movie.original_title,

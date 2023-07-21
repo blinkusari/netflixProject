@@ -42,10 +42,9 @@ export class HomeComponent implements OnInit {
 
   openModal(movie: any): void {
     const dialogRef = this.dialog.open(MovieModalComponent, {
-      width: '1000px',
-      minWidth: '0px',
+      width: '90vw',
       height: '90vh',
-      maxWidth: '90vw',
+      minWidth: '300px',
       data: {
         movieImage: movie.backdrop_path,
         movieTitle: movie.original_title,
