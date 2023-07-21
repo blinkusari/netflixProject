@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from "../../../environments/environment";
-import { User } from "../../shared/interfaces/user";
+import { Login, User } from "../../shared/interfaces/user";
 
 @Injectable({
   providedIn: 'root'
@@ -26,7 +26,7 @@ export class AuthService {
   }
 
 
-  login(user: User) {
+  login(user: Login) {
     return this.httpClient.post<any>(`${environment.authUrl}/login`, user)
       .subscribe((res: any) => {
         console.log('login', res)
