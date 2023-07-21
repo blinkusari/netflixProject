@@ -1,17 +1,18 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from 'src/app/core/services/movies.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MovieModalComponent } from 'src/app/shared/movie-modal/movie-modal.component';
 import { Movie } from "../../shared/interfaces/genre";
-import { debounceTime } from 'rxjs/operators';
+import { debounceTime, distinctUntilChanged, take, takeUntil, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent {
+export class SearchComponent implements OnInit, OnDestroy {
   searchedMovies: Movie[] = [];
   searchTerm: string = '';
   totalCount = 0;
@@ -19,6 +20,7 @@ export class SearchComponent {
   pageSize = 20;
   scrolledToBottom = false;
   loader = false;
+  private destroy$ = new Subject<void>();
 
   constructor(private route: ActivatedRoute, private movieService: MoviesService, private dialog: MatDialog) {
   }
@@ -43,41 +45,56 @@ export class SearchComponent {
 
 
     this.movieService.searchTerm$
-      .pipe(debounceTime(1000))
+      .pipe(
+        debounceTime(300),
+        distinctUntilChanged(),
+        takeUntil(this.destroy$)
+      )
       .subscribe((searchTerm) => {
         this.searchTerm = searchTerm;
-        this.searchMovies().then();
+        this.searchMovies();
       });
   }
 
-  async searchMovies() {
-    const response: any = await this.movieService.getSearchMovies(this.searchTerm, 1).toPromise();
-    this.searchedMovies = response.results;
-    this.totalCount = response?.total_results;
-    if (this.searchedMovies.length + 20 >= this.totalCount) {
-      this.loader = false;
-    }
-    else {
-      this.loader = true;
+  ngOnDestroy() {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
 
-    }
+  searchMovies() {
+    this.movieService.getSearchMovies(this.searchTerm, 1).pipe(
+      take(1)
+    ).subscribe(
+      response => {
+        console.log("response", response);
+        this.searchedMovies = response.results;
+        this.totalCount = response?.total_results;
+        if (this.searchedMovies.length + 20 >= this.totalCount) {
+          this.loader = false;
+        }
+        else {
+          this.loader = true;
+
+        }
+      }
+    );
+
     console.log("this.searchedMovies", this.searchedMovies);
 
   }
 
-  async getMovies(pageIndex) {
-    try {
-      const response: any = await this.movieService.getSearchMovies(this.searchTerm, pageIndex).toPromise();
-      this.searchedMovies = [...this.searchedMovies, ...response.results];
-    } catch (error) {
-      console.log(error)
-    }
+  getMovies(pageIndex) {
+    return this.movieService.getSearchMovies(this.searchTerm, pageIndex).pipe(
+      tap((response: any) => {
+        this.searchedMovies = [...this.searchedMovies, ...response.results];
+      })
+    );
   }
 
-  async onScrollLoadData() {
+  onScrollLoadData() {
     if (this.searchedMovies.length !== this.totalCount) {
       this.pageIndex += 1;
-      await this.getMovies(this.pageIndex);
+      this.getMovies(this.pageIndex).subscribe();
     } else {
       this.loader = false;
     }
@@ -85,8 +102,6 @@ export class SearchComponent {
 
   openModal(movie): void {
     const dialogRef = this.dialog.open(MovieModalComponent, {
-      width: '1000px',
-      minWidth: '0px',
       height: '90vh',
       maxWidth: '90vw',
       data: {
