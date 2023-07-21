@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from "../../../environments/environment";
 import { map, Subject } from 'rxjs';
+import { Genre, MovieResponse } from 'src/app/shared/interfaces/genre';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class MoviesService {
   }
 
   getGenres(activeLanguageCode: string) {
-    return this.httpClient.get(`${environment.baseUrl}/genre/movie/list?language=` + activeLanguageCode)
+    return this.httpClient.get<Genre>(`${environment.baseUrl}/genre/movie/list?language=` + activeLanguageCode)
       .pipe(
         map((response: any) => {
           const genres = response.genres.slice(0, 5);
@@ -36,7 +37,7 @@ export class MoviesService {
 
     let queryParams = new HttpParams({ fromObject: parameters });
 
-    return this.httpClient.get(`${environment.baseUrl}/discover/movie`, { params: queryParams });
+    return this.httpClient.get<MovieResponse>(`${environment.baseUrl}/discover/movie`, { params: queryParams });
   }
 
 
@@ -48,7 +49,7 @@ export class MoviesService {
 
     let queryParams = new HttpParams({ fromObject: parameters });
 
-    return this.httpClient.get(`${environment.baseUrl}/search/movie`, { params: queryParams });
+    return this.httpClient.get<MovieResponse>(`${environment.baseUrl}/search/movie`, { params: queryParams });
   }
 
 }
