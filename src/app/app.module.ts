@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './shared/header/header.component';
-import { FooterComponent } from './shared/footer/footer.component';
 import { SearchComponent } from './pages/search/search.component';
 import { AuthModule } from './pages/auth/auth.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -15,12 +14,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import {BaseInterceptor} from "./core/interceptors/base.interceptor";
 import { TranslocoRootModule } from './transloco-root.module';
+import { FooterComponent } from './shared/footer/footer.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
     SearchComponent,
   ],
   imports: [
@@ -35,6 +34,7 @@ import { TranslocoRootModule } from './transloco-root.module';
     HttpClientModule,
     MatDialogModule,
     TranslocoRootModule,
+    FooterComponent
   ],
   providers: [
     {
