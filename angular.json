@@ -5,7 +5,16 @@
   "projects": {
     "NetflixProject": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss",
+          "inlineStyle": true,
+          "inlineTemplate": true,
+          "skipTests": true,
+          "standalone": true,
+          "flat": true
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -13,7 +22,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/netflix-project",
+            "outputPath": "dist/NetflixProject/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -102,6 +111,59 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/NetflixProject/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "NetflixProject:build:development",
+              "serverTarget": "NetflixProject:server:development"
+            },
+            "production": {
+              "browserTarget": "NetflixProject:build:production",
+              "serverTarget": "NetflixProject:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "NetflixProject:build:production",
+              "serverTarget": "NetflixProject:server:production"
+            },
+            "development": {
+              "browserTarget": "NetflixProject:build:development",
+              "serverTarget": "NetflixProject:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

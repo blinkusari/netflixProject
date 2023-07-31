@@ -16,6 +16,7 @@ import {BaseInterceptor} from "./core/interceptors/base.interceptor";
 import { TranslocoRootModule } from './transloco-root.module';
 import { FooterComponent } from './shared/footer/footer.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,7 @@ import { FooterComponent } from './shared/footer/footer.component';
     SearchComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     FormsModule,
     AuthModule,
     AppRoutingModule,

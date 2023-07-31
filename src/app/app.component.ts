@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
 import { Router, NavigationStart } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router, NavigationStart } from '@angular/router';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'NetflixProject';
   isLoggedIn: boolean = false;
   constructor(private authService: AuthService, private router: Router) {
