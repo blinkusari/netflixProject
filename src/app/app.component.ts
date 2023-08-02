@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './core/services/auth.service';
-import { Router, NavigationStart } from '@angular/router';
+import { Router, NavigationStart, RouterEvent, NavigationEnd } from '@angular/router';
+import { Observable, filter, map } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,8 @@ import { Router, NavigationStart } from '@angular/router';
 export class AppComponent implements OnInit {
   title = 'NetflixProject';
   isLoggedIn: boolean = false;
+  isAuthPage$: Observable<boolean>;
+
   constructor(private authService: AuthService, private router: Router) {
     router.events.forEach((event) => {
       if (event instanceof NavigationStart) {
@@ -22,6 +25,13 @@ export class AppComponent implements OnInit {
     });
   }
   ngOnInit() {
+    this.isAuthPage$ = this.router.events.pipe(
+      filter<any>((event) => event instanceof RouterEvent),
+      map((event: NavigationEnd) => {
+        const excludedUrls = ["/login", "/register"];
+        return !excludedUrls.includes(event.url);
+      })
+    );
   }
 
 }
