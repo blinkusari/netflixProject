@@ -26,11 +26,11 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   @HostListener('window:scroll', ['$event.target'])
-  async onWindowScroll() {
+  onWindowScroll() {
     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
       if (!this.scrolledToBottom) {
         this.scrolledToBottom = true;
-        await this.onScrollLoadData();
+        this.onScrollLoadData();
       }
     } else {
       this.scrolledToBottom = false;
